@@ -11,7 +11,7 @@ require 'bcrypt'
     def login
         user = User.find_by(uid: params[:uid])
         login_password = BCrypt::Password.new(user.pass)
-        if user == params[:uid] && login_password == params[:pass]
+        if login_password == params[:pass]
             session[:login_uid] = params[:uid]
             redirect_to root_path
         else
